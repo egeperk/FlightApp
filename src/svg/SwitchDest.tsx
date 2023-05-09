@@ -3,11 +3,16 @@ import {ISvgIcon} from '../types';
 import {useContext} from 'react';
 import {ThemeContext} from '../context/ThemeContext';
 
-const SwitchDest = ({color, style, onClick, size = 24}: ISvgIcon) => {
+const SwitchDest = ({color, style, opacity, onClick, size = 24}: ISvgIcon) => {
   const {colors} = useContext(ThemeContext);
 
   return (
-    <Svg fill="none" width={size} height={size} style={style} onPress={onClick}>
+    <Svg
+      fill="none"
+      width={size}
+      height={size}
+      style={[style, {opacity: opacity}]}
+      onPress={onClick}>
       <G>
         <Path
           fill={color ?? colors.primary.main}

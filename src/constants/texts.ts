@@ -20,6 +20,14 @@ export const textContent = {
     delete: "Delete",
     noResult: "We couldn't find any result!",
     noResultDesc: "Please check your search for any typos or spelling errors, or try a different search term.",
-    sgn: "SGN - Ho Chi Minh"
+    dummySGN: "SGN - Ho Chi Minh",
+    dummyHAN: "HAN - Ha Noi, Vietnam",
+    dummyDAD: "DAD - Da Nang, Vietnam",
+    dummyCXR: "CXR - Nha Trang",
+    dummyBMV: "BMV - Buon Me Thuot, Vietnam",
+    dummyCAH: "CAH - Ca Mau, Vietnam",
+    dummyDIN: "DIN - Dien Bien, Vietnam",
+    dummyDLI: "DLI - Da Lat, Vietnam",
+    dummyHPH: "HPH - Hai Phong, Vietnam"
 
 }

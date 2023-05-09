@@ -17,6 +17,7 @@ const useStyles = () => {
        },
        icon: {
         position: 'absolute',
+        zIndex: 999,
         right: 16,
         marginTop: 48
        }

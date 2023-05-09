@@ -22,7 +22,6 @@ const useStyles = () => {
             marginHorizontal: 10
         },
         selection: {
-            color: colors.secondary.light,       
             fontSize: 14,
             fontWeight: "bold",
             marginHorizontal: 10,

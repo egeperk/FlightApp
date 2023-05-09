@@ -11,22 +11,23 @@ import DepartCalendar from '../../svg/DepartCalendar';
 import DestCalendar from '../../svg/DestCalendar';
 import PassengerChoicesTab from '../PassengerChoicesTab';
 import SwitchDest from '../../svg/SwitchDest';
+import {IPlanningProbs} from '../../types/planningCard';
+import Destination from '../../svg/Destination';
 
-const PlanningCard = () => {
+const PlanningCard = ({
+  isVisible,
+  departure,
+  destination,
+  onChangeLocations,
+  onSelectLocation,
+}: IPlanningProbs) => {
   const {container, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
-  const [departure, setDeparture] = useState(textContent.sgn);
-  const [destination, setDestination] = useState(textContent.selectDestination);
 
-  const a = () => console.log('aa');
+  const [isSwitchOpened, setSwitchResults] = useState(false);
 
-  const editDeparture = () => setDeparture('aaa');
-  const editDestination = () => setDestination('bbb');
-
-  const interchangeLocations = () => {
-    const temp = departure;
-    setDeparture(destination);
-    setDestination(temp);
+  const switchAction = () => {
+    setSwitchResults(!isSwitchOpened);
   };
 
   return (
@@ -36,26 +37,39 @@ const PlanningCard = () => {
         header={textContent.departure}
         selectedRoute={departure}
         switchOpacity={0}
+        isVisible={true}
       />
-      <SwitchDest style={icon} onClick={interchangeLocations} />
+      <SwitchDest
+        opacity={isSwitchOpened ? 1 : 0}
+        style={icon}
+        onClick={onChangeLocations}
+      />
       <SelectionCard
-        svg={<Departure color={colors.secondary.main} />}
+        svg={<Destination />}
         header={textContent.destination}
         selectedRoute={destination}
         switchOpacity={0}
+        onClick={onChangeLocations}
+        isVisible={isSwitchOpened}
       />
       <Divider />
       <SelectionCard
         svg={<DepartCalendar />}
         header={textContent.depDate}
-        selectedRoute={textContent.sgn}
+        selectedRoute={'Wed, 02/02/2022'}
         switchOpacity={1}
+        onClick={onChangeLocations}
+        isVisible={true}
+        switchValue={isSwitchOpened}
+        onSwitch={switchAction}
       />
       <SelectionCard
         svg={<DestCalendar />}
         header={textContent.returnDate}
-        selectedRoute={textContent.selectDestination}
+        selectedRoute={textContent.selectReturn}
         switchOpacity={0}
+        onClick={onChangeLocations}
+        isVisible={isSwitchOpened}
       />
       <Divider />
       <PassengerChoicesTab />
