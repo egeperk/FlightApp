@@ -10,7 +10,7 @@ const useStyles = () => {
       divider: {
         flex: 1,
         height: 1,
-        backgroundColor: colors.tertiary.divider,
+        backgroundColor: colors.tertiary.extras?.divider,
         marginBottom: 16,
         marginHorizontal: 16
       }

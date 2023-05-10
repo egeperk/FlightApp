@@ -28,6 +28,8 @@ export const textContent = {
     dummyCAH: "CAH - Ca Mau, Vietnam",
     dummyDIN: "DIN - Dien Bien, Vietnam",
     dummyDLI: "DLI - Da Lat, Vietnam",
-    dummyHPH: "HPH - Hai Phong, Vietnam"
+    dummyHPH: "HPH - Hai Phong, Vietnam",
+    dummyHUI: "HUI - Hue, Vietnam",
+    dummyPOC: "PQC - Phu Quoc, Vietnam"
 
 }

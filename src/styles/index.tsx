@@ -9,7 +9,7 @@ const useStyles = () => {
       StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: colors.secondary.background,
+          backgroundColor: colors.tertiary.extras?.background,
         },
       }),
     [colors.primary.main, colors.secondary.main, colors.tertiary],

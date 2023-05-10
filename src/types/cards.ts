@@ -5,3 +5,13 @@ export interface IPlanningProbs {
     onChangeLocations: () => void,
     onSelectLocation: () => void
 }
+
+export interface ILocationCardProbs {
+    isCrossVisible?: boolean,
+    locationText: string
+}
+
+export interface IHeaderProbs {
+    title: string,
+    onClick?: () => void
+}

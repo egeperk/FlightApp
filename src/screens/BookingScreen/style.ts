@@ -7,7 +7,7 @@ const useStyles = () => {
 
     const style = StyleSheet.create({
         recentHeader: {
-            color: colors.secondary.mid,
+            color: colors.tertiary.extras?.black_shark,
             fontSize: 18,
             fontWeight: 'bold',
             marginVertical: 12,

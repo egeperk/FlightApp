@@ -4,6 +4,8 @@ import ButtonRow from '../../components/ButtonRow';
 import PlanningCard from '../../components/PlanningCard';
 import useStyles from './style';
 import {useState} from 'react';
+import LocationItemCard from '../../components/LocationItemCard';
+import DestinationModal from '../../components/DestinationModal';
 
 const BookingScreen = () => {
   const {recentHeader} = useStyles();
@@ -37,6 +39,7 @@ const BookingScreen = () => {
         onChangeLocations={interchangeLocations}
       />
       <Text style={recentHeader}>{textContent.prevSearch}</Text>
+      <DestinationModal />
     </ScrollView>
   );
 };

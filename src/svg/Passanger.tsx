@@ -8,7 +8,7 @@ const Passenger = ({color, size = 16}: ISvgIcon) => {
   return (
     <Svg fill="none" width={size} height={size * 1.06}>
       <Path
-        fill={color ?? colors.secondary.light}
+        fill={color ?? colors.tertiary.extras?.gray_jumbo}
         d="M10.425 9.374a5 5 0 1 0-4.849 0 8.008 8.008 0 0 0-5.514 6.628C-.006 16.55.448 17 1 17h14c.552 0 1.007-.45.938-.998a8.008 8.008 0 0 0-5.514-6.628Z"
       />
     </Svg>

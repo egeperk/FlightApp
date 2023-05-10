@@ -20,12 +20,12 @@ const useStyles = () => {
        },
        head: {
         fontSize: 14,
-        color: colors.secondary.mid,
+        color: colors.tertiary.extras?.black_shark,
         marginStart: 12
        },
        optionText: {
         fontSize: 14,
-        color: colors.secondary.mid,
+        color: colors.tertiary.extras?.black_shark,
         fontWeight: "bold",
         lineHeight: 21,
         marginStart: 12,

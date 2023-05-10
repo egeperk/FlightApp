@@ -11,7 +11,7 @@ import DepartCalendar from '../../svg/DepartCalendar';
 import DestCalendar from '../../svg/DestCalendar';
 import PassengerChoicesTab from '../PassengerChoicesTab';
 import SwitchDest from '../../svg/SwitchDest';
-import {IPlanningProbs} from '../../types/planningCard';
+import {IPlanningProbs} from '../../types/cards';
 import Destination from '../../svg/Destination';
 
 const PlanningCard = ({
@@ -39,18 +39,14 @@ const PlanningCard = ({
         switchOpacity={0}
         isVisible={true}
       />
-      <SwitchDest
-        opacity={isSwitchOpened ? 1 : 0}
-        style={icon}
-        onClick={onChangeLocations}
-      />
+      <SwitchDest style={icon} onClick={onChangeLocations} />
       <SelectionCard
         svg={<Destination />}
         header={textContent.destination}
         selectedRoute={destination}
         switchOpacity={0}
         onClick={onChangeLocations}
-        isVisible={isSwitchOpened}
+        isVisible={true}
       />
       <Divider />
       <SelectionCard

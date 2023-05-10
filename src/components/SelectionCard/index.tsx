@@ -29,7 +29,7 @@ const SelectionCard = ({
           <Switch
             thumbColor={colors.secondary.main}
             trackColor={{
-              false: colors.secondary.switch,
+              false: colors.tertiary.extras?.switch,
               true: colors.primary.main,
             }}
             style={[icon, {opacity: switchOpacity}]}
@@ -47,8 +47,8 @@ const SelectionCard = ({
                     color:
                       selectedRoute === textContent.selectDestination ||
                       selectedRoute === textContent.selectReturn
-                        ? colors.secondary.light
-                        : colors.secondary.mid,
+                        ? colors.tertiary.extras?.gray_jumbo
+                        : colors.tertiary.extras?.black_shark,
                   },
                 ]}>
                 {selectedRoute}
