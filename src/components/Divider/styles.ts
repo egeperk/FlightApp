@@ -8,11 +8,9 @@ const useStyles = () => {
 
     const style = StyleSheet.create({
       divider: {
-        flex: 1,
         height: 1,
         backgroundColor: colors.tertiary.extras?.divider,
         marginBottom: 16,
-        marginHorizontal: 16
       }
     })
     return style;

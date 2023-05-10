@@ -3,7 +3,6 @@ import Cross from '../../svg/Cross';
 import useStyle from './styles';
 import {useContext} from 'react';
 import {ThemeContext} from '../../context/ThemeContext';
-import {textContent} from '../../constants/texts';
 import {IHeaderProbs} from '../../types/cards';
 
 const Header = ({title, onClick}: IHeaderProbs) => {

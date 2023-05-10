@@ -13,6 +13,7 @@ import PassengerChoicesTab from '../PassengerChoicesTab';
 import SwitchDest from '../../svg/SwitchDest';
 import {IPlanningProbs} from '../../types/cards';
 import Destination from '../../svg/Destination';
+import DestinationModal from '../DestinationModal';
 
 const PlanningCard = ({
   isVisible,
@@ -23,8 +24,13 @@ const PlanningCard = ({
 }: IPlanningProbs) => {
   const {container, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
+  const [isDestModalVisible, setDestModal] = useState(false);
 
   const [isSwitchOpened, setSwitchResults] = useState(false);
+
+  const openDestionations = () => {
+    setDestModal(!isDestModalVisible);
+  };
 
   const switchAction = () => {
     setSwitchResults(!isSwitchOpened);
@@ -45,10 +51,10 @@ const PlanningCard = ({
         header={textContent.destination}
         selectedRoute={destination}
         switchOpacity={0}
-        onClick={onChangeLocations}
+        onClick={openDestionations}
         isVisible={true}
       />
-      <Divider />
+      <Divider marginH={16} marginB={16} />
       <SelectionCard
         svg={<DepartCalendar />}
         header={textContent.depDate}
@@ -67,10 +73,14 @@ const PlanningCard = ({
         onClick={onChangeLocations}
         isVisible={isSwitchOpened}
       />
-      <Divider />
+      <Divider marginH={16} marginB={16} />
       <PassengerChoicesTab />
 
       <AppButton title={textContent.search} />
+      <DestinationModal
+        isVisible={isDestModalVisible}
+        isClosed={openDestionations}
+      />
     </View>
   );
 };

@@ -30,6 +30,7 @@ export const textContent = {
     dummyDLI: "DLI - Da Lat, Vietnam",
     dummyHPH: "HPH - Hai Phong, Vietnam",
     dummyHUI: "HUI - Hue, Vietnam",
-    dummyPOC: "PQC - Phu Quoc, Vietnam"
+    dummyPOC: "PQC - Phu Quoc, Vietnam",
+    inputPlaceHolder: "City, Country..."
 
 }

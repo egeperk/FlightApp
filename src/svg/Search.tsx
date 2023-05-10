@@ -3,10 +3,10 @@ import {ISvgIcon} from '../types';
 import React, {useContext} from 'react';
 import {ThemeContext} from '../context/ThemeContext';
 
-const Search = ({color, size = 20}: ISvgIcon) => {
+const Search = ({color, style, size = 20}: ISvgIcon) => {
   const {colors} = useContext(ThemeContext);
   return (
-    <Svg fill="none" width={size} height={size}>
+    <Svg fill="none" width={size} height={size} style={style}>
       <Path
         fill={color ?? colors.tertiary.extras?.gray_jumbo}
         fillRule="evenodd"

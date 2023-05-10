@@ -10,6 +10,7 @@ const useStyle = () => {
             flex: 1,
             flexDirection: "row",
             marginStart: 16,
+            paddingBottom: 8,
             paddingEnd: 26,
             justifyContent: "space-between",
             alignItems:"center"

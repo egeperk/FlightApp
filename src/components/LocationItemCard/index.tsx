@@ -15,7 +15,9 @@ const LocationItemCard = ({
   return (
     <View style={container}>
       <Text style={text}>{locationText}</Text>
-      {isCrossVisible && <Cross color={colors.tertiary.extras?.gray_jumbo} />}
+      {isCrossVisible && (
+        <Cross size={12} color={colors.tertiary.extras?.gray_jumbo} />
+      )}
     </View>
   );
 };
