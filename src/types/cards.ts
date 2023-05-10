@@ -1,3 +1,5 @@
+import { Location } from "../constants/dummy"
+
 export interface IPlanningProbs {
     isVisible?: boolean,
     departure: string,
@@ -8,7 +10,8 @@ export interface IPlanningProbs {
 
 export interface ILocationCardProbs {
     isCrossVisible?: boolean,
-    locationText: string
+    locationText: string,
+    onItemSelect?: () => void
 }
 
 export interface IHeaderProbs {

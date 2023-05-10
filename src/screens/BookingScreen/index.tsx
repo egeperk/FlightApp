@@ -10,22 +10,6 @@ import DestinationModal from '../../components/DestinationModal';
 const BookingScreen = () => {
   const {recentHeader} = useStyles();
 
-  const [departure, setDeparture] = useState(textContent.dummySGN);
-  const [destination, setDestination] = useState(textContent.selectDestination);
-
-  const a = () => console.log('aa');
-
-  const editDeparture = () => setDeparture('aaa');
-  const editDestination = () => setDestination('bbb');
-
-  const interchangeLocations = () => {
-    const holder = departure;
-    if (destination !== textContent.selectDestination) {
-      setDeparture(destination);
-      setDestination(holder);
-    }
-  };
-
   return (
     <ScrollView style={{position: 'relative'}}>
       <Image
@@ -33,11 +17,7 @@ const BookingScreen = () => {
         style={{flex: 1, width: '100%'}}
       />
       <ButtonRow />
-      <PlanningCard
-        destination={destination}
-        departure={departure}
-        onChangeLocations={interchangeLocations}
-      />
+      <PlanningCard />
       <Text style={recentHeader}>{textContent.prevSearch}</Text>
       <DestinationModal />
     </ScrollView>

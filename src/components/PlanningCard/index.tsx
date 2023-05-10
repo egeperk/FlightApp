@@ -3,7 +3,7 @@ import useStyles from './styles';
 import SelectionCard from '../SelectionCard';
 import {textContent} from '../../constants/texts';
 import Departure from '../../svg/Departure';
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {ThemeContext} from '../../context/ThemeContext';
 import AppButton from '../AppButton';
 import Divider from '../Divider';
@@ -14,11 +14,10 @@ import SwitchDest from '../../svg/SwitchDest';
 import {IPlanningProbs} from '../../types/cards';
 import Destination from '../../svg/Destination';
 import DestinationModal from '../DestinationModal';
+import {Location, LocationArray} from '../../constants/dummy';
 
 const PlanningCard = ({
   isVisible,
-  departure,
-  destination,
   onChangeLocations,
   onSelectLocation,
 }: IPlanningProbs) => {
@@ -27,6 +26,27 @@ const PlanningCard = ({
   const [isDestModalVisible, setDestModal] = useState(false);
 
   const [isSwitchOpened, setSwitchResults] = useState(false);
+
+  const [selectedDeparture, setDeparture] = useState<Location>(
+    LocationArray[0],
+  );
+
+  const [selectedDestination, setSelectedDestination] =
+    useState<Location>(null);
+
+  const [locationList, setLocationList] = useState(LocationArray);
+
+  const interchangeLocations = () => {
+    if (selectedDestination !== null) {
+      const holder = selectedDeparture;
+      setDeparture(selectedDestination);
+      setSelectedDestination(holder);
+    }
+  };
+
+  const handleSelectLocation = (location: Location) => {
+    setSelectedDestination(location);
+  };
 
   const openDestionations = () => {
     setDestModal(!isDestModalVisible);
@@ -41,15 +61,19 @@ const PlanningCard = ({
       <SelectionCard
         svg={<Departure />}
         header={textContent.departure}
-        selectedRoute={departure}
+        selectedRoute={selectedDeparture.location}
         switchOpacity={0}
         isVisible={true}
       />
-      <SwitchDest style={icon} onClick={onChangeLocations} />
+      <SwitchDest style={icon} onClick={interchangeLocations} />
       <SelectionCard
         svg={<Destination />}
         header={textContent.destination}
-        selectedRoute={destination}
+        selectedRoute={
+          selectedDestination === null
+            ? textContent.selectDestination
+            : selectedDestination?.location
+        }
         switchOpacity={0}
         onClick={openDestionations}
         isVisible={true}
@@ -79,7 +103,12 @@ const PlanningCard = ({
       <AppButton title={textContent.search} />
       <DestinationModal
         isVisible={isDestModalVisible}
-        isClosed={openDestionations}
+        onClose={openDestionations}
+        onSelectLocation={handleSelectLocation}
+        data={locationList.filter(
+          location =>
+            location !== selectedDeparture && location !== selectedDestination,
+        )}
       />
     </View>
   );

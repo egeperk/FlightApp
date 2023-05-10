@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import useStyle from './styles';
 import Cross from '../../svg/Cross';
 import {ILocationCardProbs} from '../../types/cards';
@@ -8,6 +8,7 @@ import {ThemeContext} from '../../context/ThemeContext';
 const LocationItemCard = ({
   isCrossVisible,
   locationText,
+  onItemSelect,
 }: ILocationCardProbs) => {
   const {container, text} = useStyle();
   const {colors} = useContext(ThemeContext);

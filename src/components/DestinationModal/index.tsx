@@ -1,26 +1,41 @@
-import {View, FlatList, Text, StatusBar} from 'react-native';
+import {View, FlatList, Text, StatusBar, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import {IDestinationModalProbs} from '../../types/modals';
 import {Location, LocationArray} from '../../constants/dummy';
 import useStyle from './styles';
 import {textContent} from '../../constants/texts';
-import Cross from '../../svg/Cross';
-import {useCallback, useContext, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {ThemeContext} from '../../context/ThemeContext';
 import Header from '../Header';
 import SearchInput from '../SearchInput';
 import Divider from '../Divider';
 import LocationItemCard from '../LocationItemCard';
 
-const DestinationModal = ({isVisible, isClosed}: IDestinationModalProbs) => {
+const DestinationModal = ({
+  isVisible,
+  data,
+  onSelectLocation,
+  onClose,
+}: IDestinationModalProbs) => {
   const {container, modalContainer, overlay} = useStyle();
   const {colors} = useContext(ThemeContext);
 
-  const renderItem = useCallback(({item}: {item: Location}) => {
+  const handleSelect = (item: Location) => {
+    if (onSelectLocation) {
+      onSelectLocation(item);
+    }
+    if (onClose) {
+      onClose();
+    }
+  };
+
+  const renderItem = ({item}: {item: Location}) => {
     return (
-      <LocationItemCard isCrossVisible={true} locationText={item.location} />
+      <TouchableOpacity onPress={() => handleSelect(item)}>
+        <LocationItemCard isCrossVisible={false} locationText={item.location} />
+      </TouchableOpacity>
     );
-  }, []);
+  };
 
   const renderSeparator = () => <Divider marginH={16} marginB={8} />;
 
@@ -33,11 +48,11 @@ const DestinationModal = ({isVisible, isClosed}: IDestinationModalProbs) => {
       <View style={overlay}>
         <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.7)"></StatusBar>
         <View style={modalContainer}>
-          <Header title={textContent.selectDestination} onClick={isClosed} />
+          <Header title={textContent.selectDestination} onClick={onClose} />
           <Divider marginH={0} marginB={16} />
           <SearchInput />
           <FlatList
-            data={LocationArray}
+            data={data}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
             style={{marginTop: 24}}

@@ -1,4 +1,8 @@
+import { Location } from "../constants/dummy"
+
 export interface IDestinationModalProbs {
-    isVisible?: boolean
-    isClosed?: () => void
+    data?: Location[],
+    isVisible?: boolean,
+    onSelectLocation?: (item: Location) => void,
+    onClose?: () => void
 }
