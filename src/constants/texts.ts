@@ -6,6 +6,7 @@ export const textContent = {
     destination: "Destination",
     depDate: "Departure date",
     returnDate: "Return date",
+    selectDeparture: "Select your departure",
     selectDestination: "Select your destination",
     selectDest: "Select destination",
     selectReturn: "Select your return date",

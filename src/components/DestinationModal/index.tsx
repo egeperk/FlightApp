@@ -1,10 +1,10 @@
-import {View, FlatList, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {View, FlatList, StatusBar, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import {IDestinationModalProbs} from '../../types/modals';
-import {Location, LocationArray} from '../../constants/dummy';
+import {Location} from '../../constants/dummy';
 import useStyle from './styles';
 import {textContent} from '../../constants/texts';
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {ThemeContext} from '../../context/ThemeContext';
 import Header from '../Header';
 import SearchInput from '../SearchInput';
@@ -14,6 +14,7 @@ import LocationItemCard from '../LocationItemCard';
 const DestinationModal = ({
   isVisible,
   data,
+  headerTitle,
   onSelectLocation,
   onClose,
 }: IDestinationModalProbs) => {
@@ -21,12 +22,8 @@ const DestinationModal = ({
   const {colors} = useContext(ThemeContext);
 
   const handleSelect = (item: Location) => {
-    if (onSelectLocation) {
-      onSelectLocation(item);
-    }
-    if (onClose) {
-      onClose();
-    }
+    if (onSelectLocation) onSelectLocation(item);
+    if (onClose) onClose();
   };
 
   const renderItem = ({item}: {item: Location}) => {
@@ -48,7 +45,7 @@ const DestinationModal = ({
       <View style={overlay}>
         <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.7)"></StatusBar>
         <View style={modalContainer}>
-          <Header title={textContent.selectDestination} onClick={onClose} />
+          <Header title={headerTitle} onClick={onClose} />
           <Divider marginH={0} marginB={16} />
           <SearchInput />
           <FlatList

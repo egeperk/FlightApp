@@ -15,22 +15,22 @@ import {IPlanningProbs} from '../../types/cards';
 import Destination from '../../svg/Destination';
 import DestinationModal from '../DestinationModal';
 import {Location, LocationArray} from '../../constants/dummy';
+import {DATA_TYPE} from '../../types';
 
-const PlanningCard = ({
-  isVisible,
-  onChangeLocations,
-  onSelectLocation,
-}: IPlanningProbs) => {
+const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
   const {container, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
   const [isDestModalVisible, setDestModal] = useState(false);
-
   const [isSwitchOpened, setSwitchResults] = useState(false);
+  const [dataType, setDataType] = useState<DATA_TYPE>();
+
+  const setData = (type: DATA_TYPE) => {
+    return setDataType(type);
+  };
 
   const [selectedDeparture, setDeparture] = useState<Location>(
     LocationArray[0],
   );
-
   const [selectedDestination, setSelectedDestination] =
     useState<Location>(null);
 
@@ -45,7 +45,8 @@ const PlanningCard = ({
   };
 
   const handleSelectLocation = (location: Location) => {
-    setSelectedDestination(location);
+    if (dataType === DATA_TYPE.DESTINATION) setSelectedDestination(location);
+    else setDeparture(location);
   };
 
   const openDestionations = () => {
@@ -63,6 +64,9 @@ const PlanningCard = ({
         header={textContent.departure}
         selectedRoute={selectedDeparture.location}
         switchOpacity={0}
+        onClick={() => {
+          openDestionations(), setData(DATA_TYPE.DEPARTURE);
+        }}
         isVisible={true}
       />
       <SwitchDest style={icon} onClick={interchangeLocations} />
@@ -75,7 +79,9 @@ const PlanningCard = ({
             : selectedDestination?.location
         }
         switchOpacity={0}
-        onClick={openDestionations}
+        onClick={() => {
+          openDestionations(), setData(DATA_TYPE.DESTINATION);
+        }}
         isVisible={true}
       />
       <Divider marginH={16} marginB={16} />
@@ -105,6 +111,11 @@ const PlanningCard = ({
         isVisible={isDestModalVisible}
         onClose={openDestionations}
         onSelectLocation={handleSelectLocation}
+        headerTitle={
+          dataType === DATA_TYPE.DEPARTURE
+            ? textContent.selectDeparture
+            : textContent.selectDestination
+        }
         data={locationList.filter(
           location =>
             location !== selectedDeparture && location !== selectedDestination,

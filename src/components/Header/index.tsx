@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import Cross from '../../svg/Cross';
 import useStyle from './styles';
 import {useContext} from 'react';
@@ -12,11 +12,9 @@ const Header = ({title, onClick}: IHeaderProbs) => {
   return (
     <View style={headerContainer}>
       <Text style={headerText}>{title}</Text>
-      <Cross
-        color={colors.tertiary.extras?.black_shark}
-        size={16}
-        onClick={onClick}
-      />
+      <TouchableOpacity onPress={onClick}>
+        <Cross color={colors.tertiary.extras?.black_shark} size={16} />
+      </TouchableOpacity>
     </View>
   );
 };

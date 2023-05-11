@@ -7,3 +7,8 @@ export interface ISvgIcon {
     style?: ViewStyle;
     onClick?: () => void;
   }
+
+  export enum DATA_TYPE {
+    DEPARTURE,
+    DESTINATION
+  }

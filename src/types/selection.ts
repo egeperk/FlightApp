@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { DATA_TYPE } from ".";
 
 export interface ISelectionCardProbs {
     isVisible?: boolean,
