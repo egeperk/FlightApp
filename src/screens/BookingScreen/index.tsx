@@ -19,7 +19,7 @@ import {DATA_TYPE} from '../../types';
 import PassangerModal from '../../components/PassengerModal';
 import ButtonRow from '../../components/ButtonRow';
 
-const BookingScreen = ({onChangeLocations}: IBookingScreenProbs) => {
+const BookingScreen = () => {
   const {container, icon, recentHeader} = useStyles();
   const {colors} = useContext(ThemeContext);
   const [isDestModalVisible, setDestModal] = useState(false);
@@ -108,7 +108,6 @@ const BookingScreen = ({onChangeLocations}: IBookingScreenProbs) => {
           header={textContent.depDate}
           selectedRoute={'Wed, 02/02/2022'}
           switchOpacity={1}
-          onClick={onChangeLocations}
           isVisible={true}
           switchValue={isSwitchOpened}
           onSwitch={switchAction}
@@ -118,7 +117,6 @@ const BookingScreen = ({onChangeLocations}: IBookingScreenProbs) => {
           header={textContent.returnDate}
           selectedRoute={textContent.selectReturn}
           switchOpacity={0}
-          onClick={onChangeLocations}
           isVisible={isSwitchOpened}
         />
         <Divider marginH={16} marginB={16} />
@@ -137,11 +135,9 @@ const BookingScreen = ({onChangeLocations}: IBookingScreenProbs) => {
               ? textContent.selectDeparture
               : textContent.selectDestination
           }
-          data={locationList.filter(
-            location =>
-              location !== selectedDeparture &&
-              location !== selectedDestination,
-          )}
+          selectedDeparture={selectedDeparture}
+          selectedDestination={selectedDestination}
+          data={locationList}
         />
         <PassangerModal
           isVisible={isPassangerModalVisible}

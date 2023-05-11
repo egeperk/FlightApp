@@ -16,6 +16,8 @@ const DestinationModal = ({
   isVisible,
   data,
   headerTitle,
+  selectedDeparture,
+  selectedDestination,
   onSelectLocation,
   onClose,
 }: IDestinationModalProbs) => {
@@ -23,6 +25,11 @@ const DestinationModal = ({
   const {colors} = useContext(ThemeContext);
 
   const [filteredList, setFilterByText] = useState(data);
+
+  const list = filteredList?.filter(
+    location =>
+      location !== selectedDeparture && location !== selectedDestination,
+  );
 
   const handleFilter = (text: string) => {
     const filteredItems = data?.filter(item =>
@@ -34,6 +41,7 @@ const DestinationModal = ({
   const handleSelect = (item: Location) => {
     if (onSelectLocation) onSelectLocation(item);
     if (onClose) onClose();
+    handleFilter('');
   };
 
   const renderItem = ({item}: {item: Location}) => {
@@ -66,7 +74,7 @@ const DestinationModal = ({
           <SearchInput onType={handleFilter} />
           <EmptySearch isVisible={filteredList?.length === 0 ? true : false} />
           <FlatList
-            data={filteredList}
+            data={list}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
             style={{marginTop: 24}}

@@ -4,6 +4,8 @@ export interface IDestinationModalProbs {
     data?: Location[],
     headerTitle: string,
     isVisible?: boolean,
+    selectedDeparture?: Location,
+    selectedDestination?: Location
     onSelectLocation?: (item: Location) => void,
     onClose?: () => void
 }

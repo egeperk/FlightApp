@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {ThemeContext} from '../../context/ThemeContext';
 import useStyles from '../../styles';
-import BookingScreen from '../../screens/hold';
+import BookingScreen from '../../screens/BookingScreen';
 
 const AppWrapper = () => {
   const colorScheme = useColorScheme();
