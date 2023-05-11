@@ -15,6 +15,7 @@ export const textContent = {
     roundTrip: "Round-trip",
     addPassenger: "Add passenger",
     passanger: "Passenger",
+    passangers: "Passengers",
     adult: "Adult",
     adultDesc: "Above 12 years old",
     child: "Child",

@@ -10,5 +10,6 @@ export interface IDestinationModalProbs {
 
 export interface IPassengerModalProbs {
     isVisible?: boolean,
-    onClose?: () => void
+    onClose?: () => void,
+    onSelectPassenger?: (count: number) => void
 }

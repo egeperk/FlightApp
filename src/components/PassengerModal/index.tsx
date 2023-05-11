@@ -12,7 +12,11 @@ import Baby from '../../svg/Baby';
 import AppButton from '../AppButton';
 import {useState} from 'react';
 
-const PassangerModal = ({isVisible, onClose}: IPassengerModalProbs) => {
+const PassangerModal = ({
+  isVisible,
+  onClose,
+  onSelectPassenger,
+}: IPassengerModalProbs) => {
   const {container, modalContainer, overlay} = useStyles();
   const [adultCount, setAdultCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
@@ -28,6 +32,10 @@ const PassangerModal = ({isVisible, onClose}: IPassengerModalProbs) => {
     } else if (type === textContent.baby) {
       setBabyCount(prevCount => (increment ? prevCount + 1 : prevCount - 1));
     }
+  };
+
+  const handlePassangerCount = (totalCount: number) => {
+    if (onSelectPassenger) onSelectPassenger(totalCount);
   };
 
   return (
@@ -76,7 +84,13 @@ const PassangerModal = ({isVisible, onClose}: IPassengerModalProbs) => {
             }
           />
           <Divider marginH={0} marginB={16} />
-          <AppButton title={textContent.done} onClick={onClose} />
+          <AppButton
+            title={textContent.done}
+            onClick={() => {
+              if (onClose) onClose();
+              handlePassangerCount(adultCount + childrenCount + babyCount);
+            }}
+          />
         </View>
       </View>
     </Modal>

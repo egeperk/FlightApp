@@ -25,7 +25,7 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
   const [isDestModalVisible, setDestModal] = useState(false);
   const [isPassangerModalVisible, setPassangerModal] = useState(false);
   const [isSwitchOpened, setSwitchResults] = useState(false);
-
+  const [count, setCount] = useState(1);
   const [dataType, setDataType] = useState<DATA_TYPE>();
 
   const setData = (type: DATA_TYPE) => {
@@ -51,6 +51,10 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
   const handleSelectLocation = (location: Location) => {
     if (dataType === DATA_TYPE.DESTINATION) setSelectedDestination(location);
     else setDeparture(location);
+  };
+
+  const handlePassengerCount = (totalCount: number) => {
+    setCount(totalCount);
   };
 
   const openDestionations = () => {
@@ -112,7 +116,10 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
         isVisible={isSwitchOpened}
       />
       <Divider marginH={16} marginB={16} />
-      <PassengerChoicesTab onPassangerClick={openPassangerModal} />
+      <PassengerChoicesTab
+        totalPassangerCount={count}
+        onPassangerClick={openPassangerModal}
+      />
 
       <AppButton title={textContent.search} />
       <DestinationModal
@@ -132,6 +139,7 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
       <PassangerModal
         isVisible={isPassangerModalVisible}
         onClose={openPassangerModal}
+        onSelectPassenger={handlePassengerCount}
       />
     </View>
   );

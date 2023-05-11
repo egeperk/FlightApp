@@ -5,7 +5,10 @@ import {textContent} from '../../constants/texts';
 import Seat from '../../svg/Seat';
 import {IPassengerChoiceTabProbs} from '../../types/cards';
 
-const PassengerChoicesTab = ({onPassangerClick}: IPassengerChoiceTabProbs) => {
+const PassengerChoicesTab = ({
+  totalPassangerCount,
+  onPassangerClick,
+}: IPassengerChoiceTabProbs) => {
   const {container, head, optionText, childContainer} = useStyles();
 
   return (
@@ -14,7 +17,11 @@ const PassengerChoicesTab = ({onPassangerClick}: IPassengerChoiceTabProbs) => {
       <TouchableWithoutFeedback onPress={onPassangerClick}>
         <View style={childContainer}>
           <Text style={head}>{textContent.passanger}</Text>
-          <Text style={optionText}>{1 + ' ' + textContent.passanger}</Text>
+          <Text style={optionText}>
+            {totalPassangerCount > 1
+              ? `${totalPassangerCount} ${textContent.passangers}`
+              : `${totalPassangerCount} ${textContent.passanger}`}
+          </Text>
         </View>
       </TouchableWithoutFeedback>
       <Seat />
