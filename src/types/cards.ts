@@ -24,4 +24,13 @@ export interface IPassengerCountProbs {
     type: string,
     description: string,
     count: number,
+    onChange?: (increment: boolean) => void
+}
+
+export interface IEmptyPageCardProbs {
+    isVisible: boolean
+}
+
+export interface IPassengerChoiceTabProbs {
+    onPassangerClick: () => void
 }

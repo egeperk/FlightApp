@@ -12,15 +12,15 @@ const useStyle = () => {
             margin: 0
         },
         modalContainer: {
-            maxHeight: deviceHeight * 0.8,
+            flex: 1,
+            marginTop: deviceHeight / 5,
             backgroundColor: colors.secondary.main,
             borderTopLeftRadius: 8,
-            borderTopRightRadius: 8,
-            paddingBottom: 32
+            borderTopRightRadius: 8
         },
         overlay: {
             flex: 1,
-            justifyContent: 'flex-end'
+            justifyContent: 'center'
           },
     })
     return style;

@@ -10,6 +10,7 @@ import Header from '../Header';
 import SearchInput from '../SearchInput';
 import Divider from '../Divider';
 import LocationItemCard from '../LocationItemCard';
+import EmptySearch from '../EmptySearch';
 
 const DestinationModal = ({
   isVisible,
@@ -63,6 +64,7 @@ const DestinationModal = ({
           />
           <Divider marginH={0} marginB={16} />
           <SearchInput onType={handleFilter} />
+          <EmptySearch isVisible={filteredList?.length === 0 ? true : false} />
           <FlatList
             data={filteredList}
             renderItem={renderItem}

@@ -3,7 +3,7 @@ import { ViewStyle } from "react-native/types"
 
 export interface IAppButtonProbs {
     title: string,
-    onClick: () => void
+    onClick?: () => void
 }
 
 export interface ISvgCardProbs {
@@ -15,5 +15,5 @@ export interface ICountButtonProbs {
     svg: ReactNode,
     color?: string,
     opacity?: number,
-    onClick: () => void
+    onClick?: () => void
 }

@@ -23,8 +23,8 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
   const {container, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
   const [isDestModalVisible, setDestModal] = useState(false);
+  const [isPassangerModalVisible, setPassangerModal] = useState(false);
   const [isSwitchOpened, setSwitchResults] = useState(false);
-  const [isDestPassangerModalVisible, setPassangerModal] = useState(false);
 
   const [dataType, setDataType] = useState<DATA_TYPE>();
 
@@ -55,6 +55,10 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
 
   const openDestionations = () => {
     setDestModal(!isDestModalVisible);
+  };
+
+  const openPassangerModal = () => {
+    setPassangerModal(!isPassangerModalVisible);
   };
 
   const switchAction = () => {
@@ -108,7 +112,7 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
         isVisible={isSwitchOpened}
       />
       <Divider marginH={16} marginB={16} />
-      <PassengerChoicesTab />
+      <PassengerChoicesTab onPassangerClick={openPassangerModal} />
 
       <AppButton title={textContent.search} />
       <DestinationModal
@@ -125,7 +129,10 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
             location !== selectedDeparture && location !== selectedDestination,
         )}
       />
-      <PassangerModal />
+      <PassangerModal
+        isVisible={isPassangerModalVisible}
+        onClose={openPassangerModal}
+      />
     </View>
   );
 };

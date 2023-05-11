@@ -20,8 +20,6 @@ const SelectionCard = ({
   const {container, childContainer, head, selection, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
 
-  const a = () => console.log('aaa');
-
   return (
     <View>
       {isVisible && (
@@ -37,9 +35,9 @@ const SelectionCard = ({
             onValueChange={onSwitch}
           />
           <View>{svg}</View>
-          <View style={childContainer}>
-            <Text style={head}>{header}</Text>
-            <Pressable onPress={onClick}>
+          <Pressable onPress={onClick}>
+            <View style={childContainer}>
+              <Text style={head}>{header}</Text>
               <Text
                 style={[
                   selection,
@@ -53,8 +51,8 @@ const SelectionCard = ({
                 ]}>
                 {selectedRoute}
               </Text>
-            </Pressable>
-          </View>
+            </View>
+          </Pressable>
         </View>
       )}
     </View>

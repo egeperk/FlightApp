@@ -10,12 +10,29 @@ import Adult from '../../svg/Adult';
 import Child from '../../svg/Child';
 import Baby from '../../svg/Baby';
 import AppButton from '../AppButton';
+import {useState} from 'react';
 
 const PassangerModal = ({isVisible, onClose}: IPassengerModalProbs) => {
   const {container, modalContainer, overlay} = useStyles();
+  const [adultCount, setAdultCount] = useState(1);
+  const [childrenCount, setChildrenCount] = useState(0);
+  const [babyCount, setBabyCount] = useState(0);
+
+  const changeCount = (type: string, increment: boolean) => {
+    if (type === textContent.adult) {
+      setAdultCount(prevCount => (increment ? prevCount + 1 : prevCount - 1));
+    } else if (type === textContent.child) {
+      setChildrenCount(prevCount =>
+        increment ? prevCount + 1 : prevCount - 1,
+      );
+    } else if (type === textContent.baby) {
+      setBabyCount(prevCount => (increment ? prevCount + 1 : prevCount - 1));
+    }
+  };
+
   return (
     <Modal
-      isVisible={false}
+      isVisible={isVisible}
       animationIn={'slideInUp'}
       animationOut={'slideOutDown'}
       style={container}>
@@ -33,24 +50,33 @@ const PassangerModal = ({isVisible, onClose}: IPassengerModalProbs) => {
             svg={<Adult />}
             type={textContent.adult}
             description={textContent.adultDesc}
-            count={1}
+            count={adultCount}
+            onChange={(increment: boolean) =>
+              changeCount(textContent.adult, increment)
+            }
           />
           <Divider marginH={16} marginB={16} />
           <PassengerCount
             svg={<Child />}
             type={textContent.child}
             description={textContent.childDesc}
-            count={0}
+            count={childrenCount}
+            onChange={(increment: boolean) =>
+              changeCount(textContent.child, increment)
+            }
           />
           <Divider marginH={16} marginB={16} />
           <PassengerCount
             svg={<Baby />}
             type={textContent.baby}
             description={textContent.babyDesc}
-            count={0}
+            count={babyCount}
+            onChange={(increment: boolean) =>
+              changeCount(textContent.baby, increment)
+            }
           />
           <Divider marginH={0} marginB={16} />
-          <AppButton title={textContent.done} />
+          <AppButton title={textContent.done} onClick={onClose} />
         </View>
       </View>
     </Modal>

@@ -8,7 +8,7 @@ const AppButton = ({title, onClick}: IAppButtonProbs) => {
   const {colors} = useContext(ThemeContext);
   const {button, text} = useStyles();
   return (
-    <TouchableOpacity style={button}>
+    <TouchableOpacity style={button} onPress={onClick}>
       <Text style={text}>{title}</Text>
     </TouchableOpacity>
   );

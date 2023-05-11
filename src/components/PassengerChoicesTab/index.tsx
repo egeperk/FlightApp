@@ -1,19 +1,22 @@
-import {Text, View} from 'react-native';
+import {Text, Touchable, TouchableWithoutFeedback, View} from 'react-native';
 import useStyles from './styles';
 import Passenger from '../../svg/Passanger';
 import {textContent} from '../../constants/texts';
 import Seat from '../../svg/Seat';
+import {IPassengerChoiceTabProbs} from '../../types/cards';
 
-const PassengerChoicesTab = () => {
+const PassengerChoicesTab = ({onPassangerClick}: IPassengerChoiceTabProbs) => {
   const {container, head, optionText, childContainer} = useStyles();
 
   return (
     <View style={container}>
       <Passenger />
-      <View style={childContainer}>
-        <Text style={head}>{textContent.passanger}</Text>
-        <Text style={optionText}>{1 + ' ' + textContent.passanger}</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={onPassangerClick}>
+        <View style={childContainer}>
+          <Text style={head}>{textContent.passanger}</Text>
+          <Text style={optionText}>{1 + ' ' + textContent.passanger}</Text>
+        </View>
+      </TouchableWithoutFeedback>
       <Seat />
       <View style={childContainer}>
         <Text style={head}>{textContent.class}</Text>
