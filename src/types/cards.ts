@@ -1,12 +1,4 @@
 import { ReactNode } from "react"
-import { Location } from "../constants/dummy"
-
-export interface IPlanningProbs {
-    isVisible?: boolean,
-    departure: string,
-    destination: string,
-    onChangeLocations: () => void
-}
 
 export interface ILocationCardProbs {
     isCrossVisible?: boolean,
@@ -32,5 +24,6 @@ export interface IEmptyPageCardProbs {
 }
 
 export interface IPassengerChoiceTabProbs {
+    totalPassangerCount: number,
     onPassangerClick: () => void
 }

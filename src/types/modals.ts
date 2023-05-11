@@ -13,3 +13,8 @@ export interface IPassengerModalProbs {
     onClose?: () => void,
     onSelectPassenger?: (count: number) => void
 }
+
+export interface IDatePickerModalProbs {
+    isVisible?: boolean,
+    onClose?: () => void
+}

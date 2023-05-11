@@ -20,7 +20,14 @@ const useStyles = () => {
         zIndex: 999,
         right: 16,
         marginTop: 48
-       }
+       },
+       recentHeader: {
+        color: colors.tertiary.extras?.black_shark,
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginVertical: 12,
+        marginStart: 16
+      }
     })
     return style;
 };
