@@ -11,7 +11,6 @@ import DepartCalendar from '../../svg/DepartCalendar';
 import DestCalendar from '../../svg/DestCalendar';
 import PassengerChoicesTab from '../../components/PassengerChoicesTab';
 import SwitchDest from '../../svg/SwitchDest';
-import {IBookingScreenProbs} from '../../types/screens';
 import Destination from '../../svg/Destination';
 import DestinationModal from '../../components/DestinationModal';
 import {Location, LocationArray} from '../../constants/dummy';
