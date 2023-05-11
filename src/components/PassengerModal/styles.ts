@@ -3,9 +3,10 @@ import { ThemeContext } from "../../context/ThemeContext"
 import { Dimensions, StyleSheet } from "react-native";
 const deviceHeight = Dimensions.get("window").height
 
-const useStyle = () => {
+const useStyles = () => {
     const {colors} = useContext(ThemeContext);
 
+  
     const style = StyleSheet.create({
         container: {
             width: '100%',
@@ -26,4 +27,4 @@ const useStyle = () => {
     return style;
 }
 
-export default useStyle;
+export default useStyles;

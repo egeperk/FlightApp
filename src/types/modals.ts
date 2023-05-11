@@ -7,3 +7,8 @@ export interface IDestinationModalProbs {
     onSelectLocation?: (item: Location) => void,
     onClose?: () => void
 }
+
+export interface IPassengerModalProbs {
+    isVisible?: boolean,
+    onClose?: () => void
+}

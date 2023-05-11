@@ -1,3 +1,4 @@
+import { ReactNode } from "react"
 import { Location } from "../constants/dummy"
 
 export interface IPlanningProbs {
@@ -16,4 +17,11 @@ export interface ILocationCardProbs {
 export interface IHeaderProbs {
     title: string,
     onClick?: () => void
+}
+
+export interface IPassengerCountProbs {
+    svg: ReactNode,
+    type: string,
+    description: string,
+    count: number,
 }

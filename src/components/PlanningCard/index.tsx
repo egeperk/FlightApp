@@ -16,12 +16,16 @@ import Destination from '../../svg/Destination';
 import DestinationModal from '../DestinationModal';
 import {Location, LocationArray} from '../../constants/dummy';
 import {DATA_TYPE} from '../../types';
+import PassengerCount from '../PassangerCountCard';
+import PassangerModal from '../PassengerModal';
 
 const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
   const {container, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
   const [isDestModalVisible, setDestModal] = useState(false);
   const [isSwitchOpened, setSwitchResults] = useState(false);
+  const [isDestPassangerModalVisible, setPassangerModal] = useState(false);
+
   const [dataType, setDataType] = useState<DATA_TYPE>();
 
   const setData = (type: DATA_TYPE) => {
@@ -121,6 +125,7 @@ const PlanningCard = ({onChangeLocations}: IPlanningProbs) => {
             location !== selectedDeparture && location !== selectedDestination,
         )}
       />
+      <PassangerModal />
     </View>
   );
 };

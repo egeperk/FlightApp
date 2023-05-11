@@ -1,5 +1,3 @@
 export interface ISearchInputProbs {
-    text: string,
-    onType: () => void,
-    onRemove: () => void,
+    onType: (text: string) => void
 }

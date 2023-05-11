@@ -10,7 +10,7 @@ const useStyle = () => {
         headerContainer: {
             flexDirection: "row",
             alignItems: "center",
-            margin: 12
+            margin: 16
         },
         headerText: {
             flex: 1,

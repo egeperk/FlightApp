@@ -10,5 +10,6 @@ export interface ISvgIcon {
 
   export enum DATA_TYPE {
     DEPARTURE,
-    DESTINATION
+    DESTINATION,
+    PASSENGER
   }

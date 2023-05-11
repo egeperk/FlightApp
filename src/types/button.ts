@@ -10,3 +10,10 @@ export interface ISvgCardProbs {
     svg: ReactNode,
     style?: ViewStyle
 }
+
+export interface ICountButtonProbs {
+    svg: ReactNode,
+    color?: string,
+    opacity?: number,
+    onClick: () => void
+}

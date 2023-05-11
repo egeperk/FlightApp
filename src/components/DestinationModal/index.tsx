@@ -4,7 +4,7 @@ import {IDestinationModalProbs} from '../../types/modals';
 import {Location} from '../../constants/dummy';
 import useStyle from './styles';
 import {textContent} from '../../constants/texts';
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {ThemeContext} from '../../context/ThemeContext';
 import Header from '../Header';
 import SearchInput from '../SearchInput';
@@ -20,6 +20,15 @@ const DestinationModal = ({
 }: IDestinationModalProbs) => {
   const {container, modalContainer, overlay} = useStyle();
   const {colors} = useContext(ThemeContext);
+
+  const [filteredList, setFilterByText] = useState(data);
+
+  const handleFilter = (text: string) => {
+    const filteredItems = data?.filter(item =>
+      item.location.toLowerCase().includes(text.toLowerCase()),
+    );
+    setFilterByText(filteredItems);
+  };
 
   const handleSelect = (item: Location) => {
     if (onSelectLocation) onSelectLocation(item);
@@ -45,11 +54,17 @@ const DestinationModal = ({
       <View style={overlay}>
         <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.7)"></StatusBar>
         <View style={modalContainer}>
-          <Header title={headerTitle} onClick={onClose} />
+          <Header
+            title={headerTitle}
+            onClick={() => {
+              if (onClose) onClose();
+              handleFilter('');
+            }}
+          />
           <Divider marginH={0} marginB={16} />
-          <SearchInput />
+          <SearchInput onType={handleFilter} />
           <FlatList
-            data={data}
+            data={filteredList}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
             style={{marginTop: 24}}
