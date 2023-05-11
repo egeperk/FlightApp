@@ -17,23 +17,36 @@ const SelectionCard = ({
   onClick,
   onSwitch,
 }: ISelectionCardProbs) => {
-  const {container, childContainer, head, selection, icon} = useStyles();
+  const {
+    container,
+    childContainer,
+    rowContainer,
+    head,
+    selection,
+    icon,
+    switchText,
+  } = useStyles();
   const {colors} = useContext(ThemeContext);
 
   return (
     <View>
       {isVisible && (
         <View style={container}>
-          <Switch
-            thumbColor={colors.secondary.main}
-            trackColor={{
-              false: colors.tertiary.extras?.switch,
-              true: colors.primary.main,
-            }}
-            style={[icon, {opacity: switchOpacity}]}
-            value={switchValue}
-            onValueChange={onSwitch}
-          />
+          <View style={rowContainer}>
+            <Text style={[switchText, {opacity: switchOpacity}]}>
+              {textContent.roundTrip}
+            </Text>
+            <Switch
+              thumbColor={colors.secondary.main}
+              trackColor={{
+                false: colors.tertiary.extras?.switch,
+                true: colors.primary.main,
+              }}
+              style={[icon, {opacity: switchOpacity}]}
+              value={switchValue}
+              onValueChange={onSwitch}
+            />
+          </View>
           <View>{svg}</View>
           <Pressable onPress={onClick}>
             <View style={childContainer}>

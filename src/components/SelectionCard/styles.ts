@@ -12,6 +12,14 @@ const useStyles = () => {
             flexDirection: "row",
             paddingHorizontal: 18
         },
+        rowContainer: {
+            flexDirection: "row",
+            flex: 1,
+            position: "absolute",
+            alignItems: "center",
+            top: 4,
+            right: 16,
+        },
         childContainer: {
             flex: 1,
             justifyContent: "flex-start"
@@ -29,11 +37,11 @@ const useStyles = () => {
             marginTop: 4
         },
         icon : {
-            flex: 1,
-            position: "absolute",
-            top: 4,
-            right: 16,
-            zIndex: 999
+            marginStart: 6
+        },
+        switchText: {
+            fontSize: 12,
+            color: colors.tertiary.extras?.black_shark
         }
     })
     return style;
