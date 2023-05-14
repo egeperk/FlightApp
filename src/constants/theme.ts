@@ -5,7 +5,8 @@ import { IBaseTheme, IColorPalette } from "../types/theme";
 
 export const themeColor: IColorPalette = {
     primary: {
-        main: "#1A94FF"
+        main: "#1A94FF",
+        light: "#1A94FF33"
     },
     secondary: {
         main: "#FFFFFF"

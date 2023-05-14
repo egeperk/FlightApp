@@ -17,6 +17,7 @@ import {Location, LocationArray} from '../../constants/dummy';
 import {DATA_TYPE} from '../../types';
 import PassangerModal from '../../components/PassengerModal';
 import ButtonRow from '../../components/ButtonRow';
+import DatePickerModal from '../../components/DatePickerModal';
 
 const BookingScreen = () => {
   const {container, icon, recentHeader} = useStyles();
@@ -143,6 +144,7 @@ const BookingScreen = () => {
           onClose={openPassangerModal}
           onSelectPassenger={handlePassengerCount}
         />
+        <DatePickerModal />
       </View>
       <Text style={recentHeader}>{textContent.prevSearch}</Text>
     </ScrollView>

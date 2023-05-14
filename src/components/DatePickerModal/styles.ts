@@ -23,6 +23,34 @@ const useStyles = () => {
             flex: 1,
             justifyContent: 'flex-end'
           },
+        rowContainer: {
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            paddingVertical: 12,
+            backgroundColor: colors.tertiary.extras?.background,
+            borderTopWidth: 1,
+            borderColor: colors.tertiary.extras?.gray_mischka
+        },
+        headerText : {
+            fontSize: 12,
+            lineHeight: 18,
+            textAlign: "center",
+            color: colors.tertiary.extras?.black_shark
+        },
+        dateText: {
+            fontSize: 14,
+            fontWeight: "bold",
+            lineHeight: 21,
+            marginTop: 2,
+            textAlign: "center",
+            color: colors.tertiary.extras?.gray_jumbo
+        },
+        divider: {
+            height: 24,
+            width: 1,
+            backgroundColor: colors.tertiary.extras?.gray_mischka,
+            alignSelf: "center"
+        }
     })
     return style;
 }

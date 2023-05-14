@@ -18,5 +18,8 @@ export interface IPassengerModalProbs {
 
 export interface IDatePickerModalProbs {
     isVisible?: boolean,
-    onClose?: () => void
+    onClose?: () => void,
+    onSetDeparture?: (departure: string) => void,
+    onSetReturn?: (returnDate: string) => void,
+
 }

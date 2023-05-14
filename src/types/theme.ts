@@ -12,6 +12,7 @@ export type IExtrasSet = Partial<
 
 export interface IColorSet {
     main: string;
+    light?: string,
     extras?: IExtrasSet;
   }
   
