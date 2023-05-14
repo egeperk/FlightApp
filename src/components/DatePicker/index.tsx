@@ -4,11 +4,14 @@ import moment from 'moment';
 import DayItem from './DayItem';
 import {IDatePickerProps} from '../../types/datePicker';
 import {textContent} from '../../constants/texts';
+import {ThemeContext} from '../../context/ThemeContext';
 
 const DatePicker = ({
   onDepartureSelected,
   onReturnSelected,
 }: IDatePickerProps) => {
+  const {colors} = useContext(ThemeContext);
+
   const [selectedStartDate, setSelectedStartDate] = useState('');
   const [selectedEndDate, setSelectedEndDate] = useState('');
   const [visibleMonth, setVisibleMonth] = useState(moment().format('YYYY-MM'));
@@ -90,6 +93,10 @@ const DatePicker = ({
       onDayPress={handleDayPress}
       onVisibleMonthsChange={handleVisibleMonthsChange}
       style={{marginBottom: 10}}
+      theme={{
+        monthTextColor: colors.tertiary.extras?.black_shark,
+        textMonthFontSize: 16,
+      }}
     />
   );
 };
