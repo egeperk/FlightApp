@@ -7,6 +7,7 @@ import {textContent} from '../../constants/texts';
 import {ThemeContext} from '../../context/ThemeContext';
 
 const DatePicker = ({
+  type,
   onDepartureSelected,
   onReturnSelected,
 }: IDatePickerProps) => {

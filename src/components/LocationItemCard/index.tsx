@@ -8,7 +8,7 @@ import {ThemeContext} from '../../context/ThemeContext';
 const LocationItemCard = ({
   isCrossVisible,
   locationText,
-  onItemSelect,
+  onDelete,
 }: ILocationCardProbs) => {
   const {container, text} = useStyle();
   const {colors} = useContext(ThemeContext);
@@ -17,7 +17,11 @@ const LocationItemCard = ({
     <View style={container}>
       <Text style={text}>{locationText}</Text>
       {isCrossVisible && (
-        <Cross size={12} color={colors.tertiary.extras?.gray_jumbo} />
+        <Cross
+          size={12}
+          color={colors.tertiary.extras?.gray_jumbo}
+          onClick={onDelete}
+        />
       )}
     </View>
   );

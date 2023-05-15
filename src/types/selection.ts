@@ -9,5 +9,6 @@ export interface ISelectionCardProbs {
     switchOpacity?: number,
     switchValue?: boolean,
     onClick?: () => void,
-    onSwitch?: () => void
+    onSwitch?: () => void,
+    onClose?: () => void
 }

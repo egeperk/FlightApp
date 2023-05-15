@@ -10,10 +10,11 @@ import Adult from '../../svg/Adult';
 import Child from '../../svg/Child';
 import Baby from '../../svg/Baby';
 import AppButton from '../AppButton';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const PassangerModal = ({
   isVisible,
+  isRefreshed,
   onClose,
   onSelectPassenger,
 }: IPassengerModalProbs) => {
@@ -21,6 +22,14 @@ const PassangerModal = ({
   const [adultCount, setAdultCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [babyCount, setBabyCount] = useState(0);
+
+  useEffect(() => {
+    if (isRefreshed) {
+      setAdultCount(1);
+      setChildrenCount(0);
+      setBabyCount(0);
+    }
+  }, [isRefreshed]);
 
   const changeCount = (type: string, increment: boolean) => {
     if (type === textContent.adult) {

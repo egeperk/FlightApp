@@ -17,3 +17,7 @@ export interface ICountButtonProbs {
     opacity?: number,
     onClick?: () => void
 }
+
+export interface IButtonRowProbs {
+    margin: number
+}

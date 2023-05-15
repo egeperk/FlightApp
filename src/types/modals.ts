@@ -1,3 +1,4 @@
+import { TRAVEL } from "."
 import { Location } from "../constants/dummy"
 
 export interface IDestinationModalProbs {
@@ -5,21 +6,22 @@ export interface IDestinationModalProbs {
     headerTitle: string,
     isVisible?: boolean,
     selectedDeparture?: Location,
-    selectedDestination?: Location
+    selectedDestination?: Location,
     onSelectLocation?: (item: Location) => void,
     onClose?: () => void
 }
 
 export interface IPassengerModalProbs {
     isVisible?: boolean,
+    isRefreshed?: boolean,
     onClose?: () => void,
     onSelectPassenger?: (count: number) => void
 }
 
 export interface IDatePickerModalProbs {
     isVisible?: boolean,
+    type: TRAVEL,
     onClose?: () => void,
-    onSetDeparture?: (departure: string) => void,
-    onSetReturn?: (returnDate: string) => void,
+    onSelection?: (departure: string) => void,
 
 }

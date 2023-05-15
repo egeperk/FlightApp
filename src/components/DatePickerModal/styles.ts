@@ -13,7 +13,7 @@ const useStyles = () => {
             margin: 0
         },
         modalContainer: {
-            maxHeight: deviceHeight * 0.8,
+            maxHeight: deviceHeight,
             backgroundColor: colors.secondary.main,
             borderTopLeftRadius: 8,
             borderTopRightRadius: 8,
@@ -25,7 +25,6 @@ const useStyles = () => {
           },
         rowContainer: {
             flexDirection: "row",
-            justifyContent: "space-evenly",
             paddingVertical: 12,
             backgroundColor: colors.tertiary.extras?.background,
             borderTopWidth: 1,

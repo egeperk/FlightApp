@@ -22,6 +22,28 @@ const useStyle = () => {
             flex: 1,
             justifyContent: 'center'
           },
+          rowContainer: {
+            flex: 1,
+            paddingHorizontal: 16,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          },
+          headerText: {
+            fontSize: 16,
+            paddingVertical:24,
+            fontWeight: "bold",
+            color: colors.tertiary.extras?.black_shark
+          },
+          deleteText: {
+            fontSize: 14,
+            paddingVertical:24,
+            color: colors.primary.main,
+            textDecorationLine: 'underline'
+          },
+          divider: {
+            height: 8,
+            backgroundColor: colors.tertiary.extras?.background
+          }
     })
     return style;
 }

@@ -5,12 +5,13 @@ import MoreAction from '../../svg/MoreAction';
 import Options from '../../svg/Options';
 import SvgButtonCard from '../SvgButtonCard';
 import useStyles from './styles';
+import {IButtonRowProbs} from '../../types/button';
 
-const ButtonRow = () => {
+const ButtonRow = ({margin}: IButtonRowProbs) => {
   const {buttonRow, flexEnd, flexStart} = useStyles();
 
   return (
-    <View style={buttonRow}>
+    <View style={[buttonRow, {marginTop: margin}]}>
       <SvgButtonCard svg={<Cross />} style={flexStart} />
       <View style={flexEnd}>
         <SvgButtonCard svg={<Favorites />} />

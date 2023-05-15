@@ -13,7 +13,10 @@ const useStyles = () => {
         borderRadius: 8,
         paddingTop: 12,
         marginHorizontal: 16,
-        marginTop: -24
+        marginTop: 24
+       },
+       safeArea: {
+        flex: 1,
        },
        icon: {
         position: 'absolute',

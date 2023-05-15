@@ -6,8 +6,9 @@ import Cross from '../../svg/Cross';
 import {useContext, useState} from 'react';
 import {ThemeContext} from '../../context/ThemeContext';
 import {ISearchInputProbs} from '../../types/input';
+import {IHistory} from '../../types';
 
-const SearchInput = ({onType}: ISearchInputProbs) => {
+const SearchInput = ({onType, onSubmit}: ISearchInputProbs) => {
   const {inputBox, container, icon} = useStyles();
   const {colors} = useContext(ThemeContext);
   const [text, setText] = useState('');
@@ -22,6 +23,10 @@ const SearchInput = ({onType}: ISearchInputProbs) => {
     onType(text);
   };
 
+  const item: IHistory = {
+    input: text,
+  };
+
   return (
     <View style={container}>
       <Search style={icon} />
@@ -30,6 +35,9 @@ const SearchInput = ({onType}: ISearchInputProbs) => {
         cursorColor={colors.primary.main}
         value={text}
         onChangeText={filterBySearch}
+        onSubmitEditing={() => {
+          if (onSubmit) onSubmit(item);
+        }}
         style={inputBox}
       />
       {text !== '' && (

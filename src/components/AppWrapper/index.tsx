@@ -4,6 +4,8 @@ import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {ThemeContext} from '../../context/ThemeContext';
 import useStyles from '../../styles';
 import BookingScreen from '../../screens/BookingScreen';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const AppWrapper = () => {
   const colorScheme = useColorScheme();
@@ -11,16 +13,13 @@ const AppWrapper = () => {
   const {container} = useStyles();
 
   return (
-    <SafeAreaView style={container}>
-      <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
-      <ThemeContext.Provider value={theme}>
-        <BookingScreen />
-      </ThemeContext.Provider>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <ThemeContext.Provider value={theme}>
+          <BookingScreen />
+        </ThemeContext.Provider>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 };
 

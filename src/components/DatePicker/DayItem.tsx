@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useContext} from 'react';
+import React, {useContext} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import useStyles from './styles';
 import {ThemeContext} from '../../context/ThemeContext';
@@ -24,15 +24,13 @@ const DayItem = ({
   selectedStartDate,
   selectedEndDate,
 }: DayItemProps) => {
-  const memoizedHandleDayPress = useCallback(() => {
-    handleDayPress(date);
-  }, [handleDayPress, date]);
-
   const {colors} = useContext(ThemeContext);
   const {dayContainer, todayContainer, dayText, priceText} = useStyles();
 
   return (
-    <TouchableOpacity onPress={memoizedHandleDayPress} disabled={isInvalidDate}>
+    <TouchableOpacity
+      onPress={() => handleDayPress(date)}
+      disabled={isInvalidDate}>
       <View
         style={
           isToday && selectedEndDate === ''
@@ -71,11 +69,16 @@ const DayItem = ({
                   return colors.primary.main;
                 } else if (isStartOrEnd) {
                   return colors.secondary.main;
+                } else if (isToday && selectedEndDate === '') {
+                  return colors.primary.main;
                 } else {
                   return colors.tertiary.extras?.black_shark;
                 }
               })(),
-              fontWeight: isStartOrEnd ? 'bold' : undefined,
+              fontWeight:
+                isStartOrEnd || (isToday && selectedEndDate === '')
+                  ? 'bold'
+                  : undefined,
             },
           ]}>
           {date.day}
@@ -102,4 +105,4 @@ const DayItem = ({
   );
 };
 
-export default memo(DayItem);
+export default DayItem;

@@ -1,9 +1,10 @@
 import { ReactNode } from "react"
+import { Location } from "../constants/dummy"
 
 export interface ILocationCardProbs {
     isCrossVisible?: boolean,
     locationText: string,
-    onItemSelect?: () => void
+    onDelete?: () => void
 }
 
 export interface IHeaderProbs {
@@ -26,4 +27,11 @@ export interface IEmptyPageCardProbs {
 export interface IPassengerChoiceTabProbs {
     totalPassangerCount: number,
     onPassangerClick: () => void
+}
+
+export interface IRecentSearchCardProbs {
+    fromLocation: string,
+    toLocation: string,
+    departureDate: string
+    returnDate?: string
 }

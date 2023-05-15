@@ -8,13 +8,10 @@ const useStyles = () => {
       () =>
         StyleSheet.create({
           buttonRow: {
-            position: 'absolute',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            top: 48,
-            start: 12,
-            end: 28,
+            marginHorizontal: 12,
           },
           flexStart: {
             alignSelf: 'flex-start',
